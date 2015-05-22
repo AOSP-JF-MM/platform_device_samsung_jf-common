@@ -104,6 +104,10 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqdMetaData
 
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8960
