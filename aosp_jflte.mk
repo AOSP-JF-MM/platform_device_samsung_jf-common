@@ -25,7 +25,7 @@
 $(call inherit-product, device/samsung/jflte/full_jflte.mk)
 
 # Inherit our stuff.
-$(call inherit-product, vendor/AOSP/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # build.prop overrides
 PRODUCT_BUILD_PROP_OVERRIDES += \
