@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(LOCAL_PATH) := device/samsung/jfltexx
+$(LOCAL_PATH) := device/samsung/jflte
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/samsung/jf-common/jf-common-vendor.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += device/samsung/jfltexx/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jflte/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -66,9 +66,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-$(call inherit-product, device/samsung/jfltexx/phone-xxhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, device/samsung/jflte/phone-xxhdpi-2048-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, device/samsung/jfltexx/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product-if-exists, device/samsung/jflte/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -133,6 +133,13 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8960
+
+# Loki
+PRODUCT_PACKAGES += \
+    loki_tool \
+    loki.sh \
+    loki_bootloaders \
+    recovery-transform.sh
 
 # Media
 PRODUCT_COPY_FILES += \

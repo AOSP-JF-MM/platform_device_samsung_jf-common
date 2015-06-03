@@ -1,4 +1,3 @@
- 
   #
   # This file should set PRODUCT_MAKEFILES to a list of product makefiles
   # to expose to the build system.  LOCAL_DIR will already be set to
@@ -11,5 +10,5 @@
   #
   
   PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_jfltexx.mk \
-    $(LOCAL_DIR)/full_jfltexx.mk 
+    $(LOCAL_DIR)/aosp_jflte.mk \
+    $(LOCAL_DIR)/full_jflte.mk

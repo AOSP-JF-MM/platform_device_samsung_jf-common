@@ -23,6 +23,12 @@
 # inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
+# inherit from the proprietary version
+-include vendor/samsung/jf-common/BoardConfigVendor.mk
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jflterefreshspr,jfltetmo,jfltecri,jfltecsp,jflteatt,jfltecan,jflteusc,jfltezm
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
@@ -32,7 +38,7 @@ TARGET_CPU_VARIANT := krait
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
-TARGET_BOARD_INFO_FILE := device/samsung/jfltexx/board-info.txt
+TARGET_BOARD_INFO_FILE := device/samsung/jflte/board-info.txt
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
@@ -59,8 +65,8 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 QCOM_ADSP_SSR_ENABLED := false
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/jfltexx/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/jfltexx/bluetooth/vnd_jf.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/jflte/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/jflte/bluetooth/vnd_jf.txt
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -76,7 +82,7 @@ BOARD_CHARGING_CMDLINE_NAME := "androidboot.bootchg"
 BOARD_CHARGING_CMDLINE_VALUE := "true"
 
 # Display
-BOARD_EGL_CFG := device/samsung/jfltexx/configs/egl.cfg
+BOARD_EGL_CFG := device/samsung/jflte/configs/egl.cfg
 BOARD_USES_LEGACY_MMAP := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
@@ -89,7 +95,7 @@ EXTENDED_FONT_FOOTPRINT := true
 TARGET_NO_RPC := true
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/jfltexx/include
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/jflte/include
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -119,14 +125,16 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
-TARGET_RECOVERY_FSTAB := device/samsung/jfltexx/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/samsung/jflte/rootdir/etc/fstab.qcom
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/jfltexx/ril
+BOARD_RIL_CLASS := ../../../device/samsung/jflte/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/samsung/jfltexx/sepolicy
+BOARD_SEPOLICY_DIRS += device/samsung/jflte/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     bluetooth.te \
@@ -160,6 +168,11 @@ BOARD_SEPOLICY_UNION += \
     vold.te \
     wpa.te
 
+# Vendor Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_jflte
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/jflte/init/init_jflte.c
+
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
@@ -177,10 +190,3 @@ WIFI_BAND := 802_11_ABG
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
-
-# inherit from the proprietary version
--include vendor/samsung/jf-common/BoardConfigVendor.mk
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jflte
-

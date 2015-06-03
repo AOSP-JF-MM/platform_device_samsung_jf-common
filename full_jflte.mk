@@ -14,21 +14,18 @@
 # limitations under the License.
 #
 
-## device overlays
-#DEVICE_PACKAGE_OVERLAYS += device/samsung/jfltexx/overlay
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := aosp_jfltexx
-PRODUCT_DEVICE := jfltexx
+PRODUCT_NAME := aosp_jflte
+PRODUCT_DEVICE := jflte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := AOSP on GT-I9505 by JDCTeam
+PRODUCT_MODEL := AOSP
 
 # Inherit from jf-common
-$(call inherit-product, device/samsung/jfltexx/device.mk)
+$(call inherit-product, device/samsung/jflte/device.mk)
 
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/jf-common/jf-common-vendor.mk)
