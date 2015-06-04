@@ -180,6 +180,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
+    
+# OTA Updates
+PRODUCT_PACKAGES += \
+    OTAUpdates
 
 # Power
 PRODUCT_PACKAGES += \
