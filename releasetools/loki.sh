@@ -12,7 +12,9 @@
 
 # Check ROM installation/upgrade:
 # if touching primary ROM flash kernel in boot partition, else skip
-export MROM=$(cat /tmp/META-INF/com/google/android/updater-script | grep "MultiROM");
+busybox mount /system
+export MROM=ls /tmp/META-INF/com/google/android | grep "updater-script"
+busybox umount /system
 if [ "$MROM" == "" ]; then
   echo "Installing primary ROM. Flashing kernel in boot partition..."
   egrep -q -f /system/etc/loki_bootloaders /proc/cmdline
