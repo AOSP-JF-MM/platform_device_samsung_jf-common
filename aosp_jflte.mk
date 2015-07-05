@@ -32,3 +32,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
   PRODUCT_NAME=aosp_jflte \
   BUILD_FINGERPRINT="samsung/jflte/jflte:5.0.1/LRX22C/I9505XXUHOB7:user/release-keys" \
   PRIVATE_BUILD_DESC="jflte-user 5.0.1 LRX22C I9505XXUHOB7 release-keys"
+
+PRODUCT_NAME := aosp_jflte
+  
