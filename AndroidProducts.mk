@@ -8,7 +8,7 @@
   # value of any variable that isn't set in this file or in a file that
   # it includes.
   #
-  
+
   PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_jflte.mk \
     $(LOCAL_DIR)/full_jflte.mk
