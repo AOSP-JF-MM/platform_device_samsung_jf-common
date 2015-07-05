@@ -30,7 +30,6 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 # build.prop overrides
 PRODUCT_BUILD_PROP_OVERRIDES += \
   PRODUCT_NAME=jflte \
-  TARGET_DEVICE=jflte \
   BUILD_FINGERPRINT="samsung/jflte/jflte:5.0.1/LRX22C/I9505XXUHOB7:user/release-keys" \
   PRIVATE_BUILD_DESC="jflte-user 5.0.1 LRX22C I9505XXUHOB7 release-keys"
 
