@@ -36,6 +36,7 @@
 
 void gsm_properties();
 void cdma_properties(char cdma_sub[]);
+void r970_properties();
 
 void vendor_load_properties()
 {
@@ -67,6 +68,7 @@ void vendor_load_properties()
     } else if (strstr(bootloader, "R970C")) {
         /* jfltecri */
         cdma_properties("0");
+        r970_properties();
         property_set("ro.build.fingerprint", "samsung/jfltecri/jfltecri:4.2.2/JDQ39/R970CVVUAME4:user/release-keys");
         property_set("ro.build.description", "jfltecri-user 4.2.2 JDQ39 R970CVVUAME4 release-keys");
         property_set("ro.product.model", "SCH-R970C");
@@ -76,6 +78,7 @@ void vendor_load_properties()
     } else if (strstr(bootloader, "R970X")) {
         /* jfltecsp */
         cdma_properties("0");
+        r970_properties();
         property_set("ro.build.fingerprint", "samsung/jfltecsp/jfltecsp:4.2.2/JDQ39/R970XWWUAMFA:user/release-keys");
         property_set("ro.build.description", "jfltecsp-user 4.2.2 JDQ39 R970XWWUAMFA release-keys");
         property_set("ro.product.model", "SCH-R970X");
@@ -88,6 +91,10 @@ void vendor_load_properties()
         property_set("ro.build.description", "jfltespr-user 4.2.2 JDQ39 L720VPUAMDL release-keys");
         property_set("ro.product.model", "SPH-L720");
         property_set("ro.product.device", "jfltespr");
+        property_set("ro.cdma.home.operator.numeric", "310120");
+        property_set("ro.cdma.home.operator.alpha", "Sprint");
+        property_set("ro.telephony.default_network", "8");
+        property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("telephony.sms.pseudo_multipart", "1");
     } else if (strstr(bootloader, "M919")) {
         /* jfltetmo */
@@ -99,13 +106,13 @@ void vendor_load_properties()
     } else if (strstr(bootloader, "R970")) {
         /* jflteusc */
         cdma_properties("0");
+        r970_properties();
         property_set("ro.build.fingerprint", "samsung/jflteusc/jflteusc:4.2.2/JDQ39/R970VXUAMD9:user/release-keys");
         property_set("ro.build.description", "jflteusc-user 4.2.2 JDQ39 R970VXUAMD9 release-keys");
         property_set("ro.product.model", "SCH-R970");
         property_set("ro.product.device", "jflteusc");
         property_set("ro.cdma.home.operator.alpha", "U.S.Cellular");
         property_set("ro.cdma.home.operator.numeric", "311580");
-        property_set("telephony.sms.pseudo_multipart", "1");
     } else if (strstr(bootloader, "I545")) {
         /* jfltevzw */
         cdma_properties("0");
@@ -115,7 +122,13 @@ void vendor_load_properties()
         property_set("ro.product.device", "jfltevzw");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
         property_set("ro.cdma.home.operator.numeric", "311480");
+        property_set("ro.telephony.default_network", "10");
         property_set("ro.telephony.get_imsi_from_sim", "true");
+        property_set("ro.config.multimode_cdma", "1");
+        property_set("ro.config.combined_signal", "true");
+        property_set("ro.gsm.data_retry_config", "max_retries=infinite,5000,5000,60000,120000,480000,900000");
+        property_set("DEVICE_PROVISIONED", "1");
+        property_set("ro.com.google.clientidbase", "android-verizon");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
@@ -168,6 +181,18 @@ void cdma_properties(char cdma_sub[])
 {
     property_set("ro.telephony.default_cdma_sub", cdma_sub);
     property_set("ro.gps.set_privacy", "1");
+    property_set("persist.eons.enabled", "false");
+    property_set("persist.radio.snapshot_enabled", "1");
+    property_set("persist.radio.snapshot_timer", "22");
     property_set("telephony.lteOnCdmaDevice", "1");
-    property_set("ro.telephony.default_network", "10");
+}
+
+void r970_properties()
+{
+    property_set("ro.telephony.default_network", "8");
+    property_set("ril.subscription.types", "NV,RUIM");
+    property_set("telephony.sms.pseudo_multipart", "1");
+    property_set("ro.config.combined_signal", "true");
+    property_set("ro.gsm.data_retry_config", "max_retries=infinite,0,0,60000,120000,480000,900000");
+    property_set("DEVICE_PROVISIONED", "1");
 }

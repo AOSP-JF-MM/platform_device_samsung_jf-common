@@ -279,11 +279,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.repeatable_keys=114,115
 
 # ril
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ril/props/cdma/cdma.txt:system/blobs/cdma/cdma.txt \
-    $(LOCAL_PATH)/ril/props/gsm/gsm.txt:system/blobs/gsm/gsm.txt \
-    $(LOCAL_PATH)/ril/props/usc/usc.txt:system/blobs/usc/usc.txt \
-    $(LOCAL_PATH)/ril/props/vzw/vzw.txt:system/blobs/vzw/vzw.txt
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=jflteRIL
 
