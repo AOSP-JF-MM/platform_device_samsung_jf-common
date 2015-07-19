@@ -8,16 +8,13 @@
 # Run loki patch on boot.img for locked bootloaders, found in loki_bootloaders
 #
 # Update for MultiROM by Mattia "AntaresOne" D'Alleva
-#
 
-# Check ROM installation/upgrade:
-# if touching primary ROM flash kernel in boot partition, else skip
-busybox mount /system
-export MROM=ls /tmp/META-INF/com/google/android | grep "updater-script"
-busybox umount /system
-if [ "$MROM" == "" ]; then
-  echo "Installing primary ROM. Flashing kernel in boot partition..."
-  egrep -q -f /system/etc/loki_bootloaders /proc/cmdline
+# MultiROM environment recognition
+MROM=$(ls /tmp | grep "META-INF")
+
+# Run Loki tool
+LOKI() {
+egrep -q -f /system/etc/loki_bootloaders /proc/cmdline
   if [ $? -eq 0 ];then
     echo '[*] Locked bootloader version detected.'
     export C=/tmp/loki_tmpdir
@@ -33,7 +30,13 @@ if [ "$MROM" == "" ]; then
     echo '[*] Flashing unmodified boot.img to device.'
     dd if=/tmp/boot.img of=/dev/block/platform/msm_sdcc.1/by-name/boot || exit 1
   fi
+}
+
+# Start
+if [ "$MROM" == "" ]; then
+  echo "Installing primary ROM. Flashing kernel in boot partition..."
+  LOKI
 else
   echo "Installing ROM in MultiROM. Skipping kernel flash..."
+  exit 0
 fi
-exit 0
