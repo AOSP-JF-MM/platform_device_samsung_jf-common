@@ -132,8 +132,8 @@ void vendor_load_properties()
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
-        property_set("ro.build.fingerprint", "samsung/jgedlteue/jgedlte:4.4.3/KTU84L.S003/140503:user/release-keys");
-        property_set("ro.build.description", "jgedlteue-user 4.4.3 KTU84L.S003 140503 release-keys");
+        property_set("ro.build.fingerprint", "samsung/jgedlteue/jgedlte:5.1/LMY47O.S008/150802:user/release-keys");
+        property_set("ro.build.description", "jgedlteue-user 5.1 LMY47O.S008 150802 release-keys");
         property_set("ro.product.model", "GT-I9505G");
         property_set("ro.product.device", "jgedlte");
     } else if (strstr(bootloader, "I9505")) {
