@@ -136,7 +136,7 @@ void vendor_load_properties()
         property_set("ro.build.description", "jgedlteue-user 5.1 LMY47O.S008 150802 release-keys");
         property_set("ro.product.model", "GT-I9505G");
         property_set("ro.product.device", "jgedlte");
-        property_set("ril.subscription.types", "NV,RUIM")
+        property_set("ril.subscription.types", "NV,RUIM");
         property_set("DEVICE_PROVISIONED", "1");
     } else if (strstr(bootloader, "I9505")) {
         /* jfltexx */
