@@ -137,37 +137,6 @@ BOARD_RIL_CLASS := ../../../device/samsung/jflte/ril
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/samsung/jflte/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    device.te \
-    file_contexts \
-    file.te \
-    genfs_contexts \
-    healthd.te \
-    hostapd.te \
-    insthk.te \
-    kernel.te \
-    keypad_dev.te \
-    macloader.te \
-    mdm_helper.te \
-    mediaserver.te \
-    mm-pp-daemon.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    netd.te \
-    panel_dev.te \
-    property_contexts \
-    property.te \
-    rild.te \
-    system_app.te \
-    system_server.te \
-    tee.te \
-    thermal-engine.te \
-    ueventd.te \
-    vibe_dev.te \
-    vold.te \
-    wpa.te
-
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_jflte
