@@ -103,7 +103,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/samsung/jflte/include
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Logging
-TARGET_USES_LOGD := false
+#TARGET_USES_LOGD := false
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8960
