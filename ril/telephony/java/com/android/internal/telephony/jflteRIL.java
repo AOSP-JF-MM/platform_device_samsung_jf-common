@@ -70,14 +70,12 @@ public class jflteRIL extends RIL implements CommandsInterface {
     public jflteRIL(Context context, int networkModes, int cdmaSubscription) {
         this(context, networkModes, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
-        mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 4);
     }
 
     public jflteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
-        mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 4);
     }
 
     @Override
@@ -566,38 +564,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
-    }
-
-    //this method is used in the search network functionality.
-    // in mobile network setting-> network operators
-    @Override
-    protected Object
-    responseOperatorInfos(Parcel p) {
-        String strings[] = (String [])responseStrings(p);
-        ArrayList<OperatorInfo> ret;
-
-        if (strings.length % mQANElements != 0) {
-            throw new RuntimeException(
-                                       "RIL_REQUEST_QUERY_AVAILABLE_NETWORKS: invalid response. Got "
-                                       + strings.length + " strings, expected multiple of " + mQANElements);
-        }
-
-        ret = new ArrayList<OperatorInfo>(strings.length / mQANElements);
-        Operators init = null;
-        if (strings.length != 0) {
-            init = new Operators();
-        }
-        for (int i = 0 ; i < strings.length ; i += mQANElements) {
-            String temp = init.unOptimizedOperatorReplace(strings[i+0]);
-            ret.add (
-                     new OperatorInfo(
-                                      temp, //operatorAlphaLong
-                                      temp,//operatorAlphaShort
-                                      strings[i+2],//operatorNumeric
-                                      strings[i+3]));//state
-        }
-
-        return ret;
     }
 
     @Override
