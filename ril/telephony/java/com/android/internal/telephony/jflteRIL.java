@@ -64,7 +64,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
     private Object mSMSLock = new Object();
     private boolean mIsSendingSMS = false;
     protected boolean isGSM = false;
-    private static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
+    private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
     public jflteRIL(Context context, int networkModes, int cdmaSubscription) {
