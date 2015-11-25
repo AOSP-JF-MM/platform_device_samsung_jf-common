@@ -216,10 +216,6 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
 # Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
