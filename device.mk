@@ -174,7 +174,6 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    libdashplayer \
     libOmxCore \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -183,10 +182,7 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libOmxVenc \
     libOmxVdec \
-    qcmediaplayer
-
-PRODUCT_BOOT_JARS += \
-    qcmediaplayer
+    libstagefrighthw
 
 # Power
 PRODUCT_PACKAGES += \
