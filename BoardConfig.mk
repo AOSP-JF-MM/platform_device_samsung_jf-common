@@ -52,6 +52,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/jf
 TARGET_KERNEL_CONFIG := aosp_jf_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_KERNEL_HAVE_NTFS := true
 
 # Audio
 BOARD_HAVE_AUDIENCE_ES325_2MIC := true
