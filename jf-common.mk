@@ -176,6 +176,7 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
     libOmxCore \
     libOmxAacEnc \
     libOmxAmrEnc \
