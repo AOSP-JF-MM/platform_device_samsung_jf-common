@@ -253,8 +253,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
 		    // Read parcel directly
 		    dc.namePresentation = p.readInt();
 	    }
-            int uusInfoPresent = p.readInt();
-            if (uusInfoPresent == 1) {
+            if (p.readInt() == 1) {
                 dc.uusInfo = new UUSInfo();
                 dc.uusInfo.setType(p.readInt());
                 dc.uusInfo.setDcs(p.readInt());
