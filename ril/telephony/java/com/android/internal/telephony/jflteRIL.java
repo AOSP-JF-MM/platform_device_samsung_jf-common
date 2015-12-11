@@ -216,7 +216,6 @@ public class jflteRIL extends RIL implements CommandsInterface {
     protected Object
     responseCallList(Parcel p) {
         int num;
-        int voiceSettings;
         ArrayList<DriverCall> response;
         DriverCall dc;
 
@@ -237,19 +236,23 @@ public class jflteRIL extends RIL implements CommandsInterface {
             dc.isMpty = (0 != p.readInt());
             dc.isMT = (0 != p.readInt());
             dc.als = p.readInt();
-            voiceSettings = p.readInt();
-            dc.isVoice = (0 == voiceSettings) ? false : true;
-            dc.isVoicePrivacy = (0 != p.readInt());
-            if (isGSM) {
-                p.readInt();
-                p.readInt();
-                p.readString();
+            dc.isVoice = (0 != p.readInt());
+            if (!isGSM) {
+		    p.readInt();
+		    p.readInt();
+		    p.readString();
             }
+	    dc.isVoicePrivacy = (0 != p.readInt());
             dc.number = p.readString();
-            int np = p.readInt();
-            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
+            dc.numberPresentation = DriverCall.presentationFromCLIP(p.readInt());
             dc.name = p.readString();
-            dc.namePresentation = p.readInt();
+	    if (isGSM) {
+		    // Read namePresentation from CLIP
+		    dc.namePresentation = DriverCall.presentationfromCLIP(p.readInt());
+	    } else {
+		    // Read parcel directly
+		    dc.namePresentation = p.readInt();
+	    }
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
