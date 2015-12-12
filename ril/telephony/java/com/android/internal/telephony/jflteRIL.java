@@ -248,7 +248,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
             dc.name = p.readString();
 	    if (isGSM) {
 		    // Read namePresentation from CLIP
-		    dc.namePresentation = DriverCall.presentationfromCLIP(p.readInt());
+		    dc.namePresentation = DriverCall.presentationFromCLIP(p.readInt());
 	    } else {
 		    // Read parcel directly
 		    dc.namePresentation = p.readInt();
