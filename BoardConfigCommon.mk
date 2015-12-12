@@ -26,10 +26,7 @@
 # inherit from the proprietary version
 -include vendor/samsung/jf-common/BoardConfigVendor.mk
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jflterefreshspr,jfltetmo,jfltecri,jfltecsp,jflteatt,jfltecan,jflteusc,jfltezm
-
-COMMON_PATH := device/samsung/jflte
+COMMON_PATH := device/samsung/jf-common
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
@@ -137,19 +134,12 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 # RIL
 BOARD_RIL_CLASS := ../../../$(COMMON_PATH)/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
-
-# Vendor Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_jflte
-TARGET_LIBINIT_DEFINES_FILE := $(COMMON_PATH)/init/init_jflte.cpp
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
